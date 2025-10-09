@@ -1,10 +1,24 @@
 module Api::V1::Spotify
   class SpotifyController < ApplicationController
+
     def new_releases
-      response = V1::Spotify::Client.new_releases
-      render json: JSON.parse(response.body)
-    rescue => e
-      render json: { error: e.message }, status: :bad_request
+      result = V1::Spotify::Client.new_releases
+        render json: result
+    end
+
+    def featured_playlists
+      result = V1::Spotify::Client.featured_playlists
+        render json: result
+    end
+
+    def available_markets
+      result = V1::Spotify::Client.available_markets
+        render json: result
+    end    
+
+    def get_error
+      response = V1::Spotify::Client.bad_route
+      render json: response
     end
   end
 end

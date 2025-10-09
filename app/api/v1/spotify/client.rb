@@ -5,30 +5,16 @@ module V1
         Request.call(http_method: "get", endpoint: "/browse/new-releases")
       end
 
-      def self.several_artists(ids)
-        id_string = ids.join(",")
-        endpoint = "/artists?ids=#{id_string}"
-        Request.call(http_method: "get", endpoint: endpoint)
+      def self.featured_playlists
+        Request.call(http_method: "get", endpoint: "/browse/featured-playlists?country=PH")
       end
 
-      def self.search_artist(name)
-        encoded_name = URI.encode_www_form_component(name)
-        endpoint = "/search?q=#{encoded_name}&type=artist"
-        Request.call(http_method: "get", endpoint: endpoint)
-      end
-
-
-      def self.get_artist_id(name)
-        response = search_artist(name)
-        parsed = JSON.parse(response.body)
-
-        # Try to find an exact match first
-        match = parsed["artists"]["items"].find { |artist| artist["name"].downcase == name.downcase }
-
-        # Fallback to first result if no exact match
-        match ||= parsed["artists"]["items"].first
-
-        match ? match["id"] : nil
+      def self.available_markets
+        Request.call(http_method: "get", endpoint: "/markets")
+      end   
+      
+      def self.bad_route
+        Request.call(http_method: "get", endpoint: "/this-does-not-exist")
       end
     end
   end

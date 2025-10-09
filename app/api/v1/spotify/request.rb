@@ -23,18 +23,23 @@ module V1
       end
 
       def self.call(http_method:, endpoint:)
-        token = access_token
-        RestClient::Request.execute(
-          method: http_method,
-          url: "#{BASE_URL}#{endpoint}",
-          headers: {
-            'Authorization': "Bearer #{token}",
-            'Content-Type': 'application/json'
-          }
-        )
-      rescue RestClient::ExceptionWithResponse => e
-        puts "Spotify API Error: #{e.response}"
-        e.response
+        begin
+          token = access_token
+          puts "ACCESS TOKEN: #{token}"
+          response = RestClient::Request.execute(
+            method: http_method,
+            url: "#{BASE_URL}#{endpoint}",
+            headers: {
+              'Authorization': "Bearer #{token}",
+              'Content-Type': 'application/json'
+            }
+          )
+          JSON.parse(response.body)
+        rescue RestClient::ExceptionWithResponse => e
+          { code: e.http_code, status: e.message, data: Errors.map(e.http_code) }
+          puts "Spotify API Error: #{e.response}"
+          # e.response
+        end
       end
     end
   end
