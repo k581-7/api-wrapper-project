@@ -1,30 +1,28 @@
 # api-wrapper-project
 A Rails-based API wrapper for Spotify Web API, used for educational purposes.
 
-Overview:
-
-This is a custom API wrapper for the Spotify Web API, built inside a Rails application. It provides a modular, testable interface for fetching Spotify data such as new releases, featured playlists, and available markets.
+# Overview:
+This is a custom API wrapper for the Spotify Web API, built inside a Rails application.  
+It provides a modular, testable interface for fetching Spotify data such as new releases, featured playlists, and available markets.  
 The wrapper is exposed via controller actions and routes for easy testing and future integration into your app.
 
-Features:
-
-/api/v1/spotify/new_releases - Fetches the latest album releases
-/api/v1/spotify/featured_playlists - Retrieves curated playlists for specific country (PH)
-/api/v1/spotify/available_markets - Lists all Spotify-supported markets
+# Features:
+/api/v1/spotify/new_releases - Fetches the latest album releases  
+/api/v1/spotify/featured_playlists - Retrieves curated playlists for specific country (PH)  
+/api/v1/spotify/available_markets - Lists all Spotify-supported markets  
 /api/v1/spotify/bad_route - Simulates an error response for testing error handling
 
-Modules: 
-
-V1::Spotify::Client - Public interface for callin Spotify endpoints
-V1::Spotify::Request - Handles authentication and requests
-V1::Spotify::Errors - Maps http error codes to readable messages
+# Modules:
+V1::Spotify::Client - Public interface for calling Spotify endpoints  
+V1::Spotify::Request - Handles authentication and requests  
+V1::Spotify::Errors - Maps HTTP error codes to readable messages  
 Api::V1::Spotify::SpotifyController - Rails controller exposing wrapper methods via routes
 
-How to use:
-
+# How to use:
 Start with authentication.
 
-Uses Client Credentials Flow to fetch an access token from Spotify:
+Uses **Client Credentials Flow** to fetch an access token from Spotify:
+```ruby
 RestClient.post(
   'https://accounts.spotify.com/api/token',
   { grant_type: 'client_credentials' },
@@ -33,6 +31,7 @@ RestClient.post(
     'Content-Type': 'application/x-www-form-urlencoded'
   }
 )
+
 
 Make sure to set your credentials in .env:
 SPOTIFY_CLIENT_ID=your_client_id
@@ -53,6 +52,6 @@ Spotify errors are caught and translated into:
 404 - "Invalid Request!"
 Others - "Service unavailable. Please try again!"
 
-Notes:
+# Notes:
 
 This wrapper is scaffolded for testing and modularity. You can also extend it to include more endpoints like track search, artist details, etc. The /bad_route error simulation is just an example of customization. You can use this app for practice. Thank you!
