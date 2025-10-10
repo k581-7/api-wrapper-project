@@ -31,20 +31,23 @@ RestClient.post(
     'Content-Type': 'application/x-www-form-urlencoded'
   }
 )
+```
 
-
-Make sure to set your credentials in .env:
+# Make sure to set your credentials in .env:
+```ruby
 SPOTIFY_CLIENT_ID=your_client_id
 SPOTIFY_CLIENT_SECRET=your_client_secret
+```
 
-Once your Rails server is running, you can test the wrapper via:
+# Once your Rails server is running, you can test the wrapper via:
 
 GET /api/v1/spotify/new_releases
 GET /api/v1/spotify/featured_playlists
 GET /api/v1/spotify/available_markets
 GET /api/v1/spotify/bad_route
 
-Each endpoint returns JSON responses directly from Spotify or a mapped error message.
+# Each endpoint returns JSON responses directly from Spotify or a mapped error message.
+
 
 Spotify errors are caught and translated into:
 
@@ -55,3 +58,6 @@ Others - "Service unavailable. Please try again!"
 # Notes:
 
 This wrapper is scaffolded for testing and modularity. You can also extend it to include more endpoints like track search, artist details, etc. The /bad_route error simulation is just an example of customization. You can use this app for practice. Thank you!
+
+# Source API :
+https://developer.spotify.com/documentation/web-api
