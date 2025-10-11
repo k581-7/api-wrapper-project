@@ -6,8 +6,8 @@ module Api::V1::Spotify
         render json: result
     end
 
-    def featured_playlists
-      result = V1::Spotify::Client.featured_playlists
+    def browse_categories
+      result = V1::Spotify::Client.browse_categories
         render json: result
     end
 

@@ -5,8 +5,8 @@ module V1
         Request.call(http_method: "get", endpoint: "/browse/new-releases")
       end
 
-      def self.featured_playlists
-        Request.call(http_method: "get", endpoint: "/browse/featured-playlists?country=PH")
+      def self.browse_categories
+        Request.call(http_method: "get", endpoint: "/browse/categories")
       end
 
       def self.available_markets

@@ -8,7 +8,7 @@ The wrapper is exposed via controller actions and routes for easy testing and fu
 
 # Features:
 /api/v1/spotify/new_releases - Fetches the latest album releases  
-/api/v1/spotify/featured_playlists - Retrieves curated playlists for specific country (PH)  
+/api/v1/spotify/browse_categories - Retrieves available categories 
 /api/v1/spotify/available_markets - Lists all Spotify-supported markets  
 /api/v1/spotify/bad_route - Simulates an error response for testing error handling
 
@@ -42,7 +42,7 @@ SPOTIFY_CLIENT_SECRET=your_client_secret
 # Once your Rails server is running, you can test the wrapper via:
 
 GET /api/v1/spotify/new_releases
-GET /api/v1/spotify/featured_playlists
+GET /api/v1/spotify/browse_categories
 GET /api/v1/spotify/available_markets
 GET /api/v1/spotify/bad_route
 
@@ -52,7 +52,7 @@ GET /api/v1/spotify/bad_route
 Spotify errors are caught and translated into:
 
 401 - "Unauthorized request. Please try again!"
-404 - "Invalid Request!"
+404 - "Oh no. Invalid Request!"
 Others - "Service unavailable. Please try again!"
 
 # Notes:

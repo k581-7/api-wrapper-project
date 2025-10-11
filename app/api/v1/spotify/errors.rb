@@ -6,7 +6,7 @@ module V1
         when 401 
           return "Unauthorized request. Please try again!"
         when 404
-          return "Invalid Request!"
+          return "Oh no. Invalid Request!"
         else
           return "Service unavailable. Please try again!"
         end

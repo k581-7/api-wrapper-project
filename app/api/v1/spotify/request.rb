@@ -37,8 +37,6 @@ module V1
           JSON.parse(response.body)
         rescue RestClient::ExceptionWithResponse => e
           { code: e.http_code, status: e.message, data: Errors.map(e.http_code) }
-          puts "Spotify API Error: #{e.response}"
-          # e.response
         end
       end
     end
