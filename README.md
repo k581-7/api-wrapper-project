@@ -18,42 +18,29 @@ V1::Spotify::Request - Handles authentication and requests
 V1::Spotify::Errors - Maps HTTP error codes to readable messages  
 Api::V1::Spotify::SpotifyController - Rails controller exposing wrapper methods via routes
 
-# How to use:
-Start with authentication.
-
-Uses **Client Credentials Flow** to fetch an access token from Spotify:
-```ruby
-RestClient.post(
-  'https://accounts.spotify.com/api/token',
-  { grant_type: 'client_credentials' },
-  {
-    Authorization: "Basic #{Base64.strict_encode64("#{CLIENT_ID}:#{CLIENT_SECRET}")}",
-    'Content-Type': 'application/x-www-form-urlencoded'
-  }
-)
-```
-
 # Make sure to set your credentials in .env:
 ```ruby
 SPOTIFY_CLIENT_ID=your_client_id
 SPOTIFY_CLIENT_SECRET=your_client_secret
 ```
+You can get these from Spotify Developer Dashboard. Link at the bottom source.
 
-# Once your Rails server is running, you can test the wrapper via:
-
-GET /api/v1/spotify/new_releases
-GET /api/v1/spotify/browse_categories
-GET /api/v1/spotify/available_markets
-GET /api/v1/spotify/bad_route
-
-# Each endpoint returns JSON responses directly from Spotify or a mapped error message.
+# Fork or download the repo
+So you can run the existing files and modify them as you needed. (client, errors, request, controller, and routes)
 
 
-Spotify errors are caught and translated into:
+# Once your Rails server is running, you can also check it via POSTMAN
 
-401 - "Unauthorized request. Please try again!"
-404 - "Oh no. Invalid Request!"
-Others - "Service unavailable. Please try again!"
+- http://[::1]:3000/api/v1/spotify/new_releases
+- http://[::1]:3000/api/v1/spotify/browse_categories
+- http://[::1]:3000/api/v1/spotify/available_markets
+- http://[::1]:3000/api/v1/spotify/bad_routes
+
+# Mapped errors:
+
+- 401 - "Unauthorized request. Please try again!"
+- 404 - "Oh no. Invalid Request!"
+- Others - "Service unavailable. Please try again!"
 
 # Notes:
 
