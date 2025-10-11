@@ -7,16 +7,16 @@ It provides a modular, testable interface for fetching Spotify data such as new 
 The wrapper is exposed via controller actions and routes for easy testing and future integration into your app.
 
 # Features:
-/api/v1/spotify/new_releases - Fetches the latest album releases  
-/api/v1/spotify/browse_categories - Retrieves available categories 
-/api/v1/spotify/available_markets - Lists all Spotify-supported markets  
-/api/v1/spotify/bad_route - Simulates an error response for testing error handling
+- /api/v1/spotify/new_releases - Fetches the latest album releases  
+- /api/v1/spotify/browse_categories - Retrieves available categories 
+- /api/v1/spotify/available_markets - Lists all Spotify-supported markets  
+- /api/v1/spotify/bad_route - Simulates an error response for testing error handling
 
 # Modules:
-V1::Spotify::Client - Public interface for calling Spotify endpoints  
-V1::Spotify::Request - Handles authentication and requests  
-V1::Spotify::Errors - Maps HTTP error codes to readable messages  
-Api::V1::Spotify::SpotifyController - Rails controller exposing wrapper methods via routes
+- V1::Spotify::Client - Public interface for calling Spotify endpoints  
+- V1::Spotify::Request - Handles authentication and requests  
+- V1::Spotify::Errors - Maps HTTP error codes to readable messages  
+- Api::V1::Spotify::SpotifyController - Rails controller exposing wrapper methods via routes
 
 # Make sure to set your credentials in .env:
 ```ruby
